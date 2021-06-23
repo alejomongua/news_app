@@ -36,7 +36,7 @@ class Article {
   String title;
   String description;
   String url;
-  String urlToImage;
+  String? urlToImage;
   DateTime publishedAt;
   String content;
 
@@ -57,7 +57,7 @@ class Article {
         title: json["title"] ?? '',
         description: json["description"] ?? '',
         url: json["url"] ?? '',
-        urlToImage: json["urlToImage"] ?? '',
+        urlToImage: json["urlToImage"],
         publishedAt: DateTime.parse(json["publishedAt"]),
         content: json["content"] ?? '',
       );
