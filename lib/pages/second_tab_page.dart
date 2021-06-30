@@ -7,8 +7,12 @@ class SecondTabPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          children: [_CategoryList()],
+        body: Container(
+          child: Column(
+            children: [
+              _CategoryList(),
+            ],
+          ),
         ),
       ),
     );
@@ -20,22 +24,28 @@ class _CategoryList extends StatelessWidget {
   Widget build(BuildContext context) {
     final categories = Provider.of<NewsService>(context).categories;
 
-    return ListView.builder(
-      physics: BouncingScrollPhysics(),
-      scrollDirection: Axis.horizontal,
-      itemCount: categories.length,
-      itemBuilder: (BuildContext context, int index) {
-        return Container(
-          child: Column(
-            children: [
-              Icon(categories[index].icon),
-              SizedBox(height: 5),
-              Text(categories[index].name),
-            ],
-          ),
-          padding: EdgeInsets.all(8),
-        );
-      },
+    return Container(
+      height: 200,
+      child: ListView.builder(
+        shrinkWrap: true,
+        physics: BouncingScrollPhysics(),
+        scrollDirection: Axis.horizontal,
+        itemCount: categories.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Padding(
+            child: Column(
+              children: [
+                Icon(categories[index].icon),
+                SizedBox(
+                  height: 8,
+                ),
+                Text(categories[index].name),
+              ],
+            ),
+            padding: EdgeInsets.all(8),
+          );
+        },
+      ),
     );
   }
 }
